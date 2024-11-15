@@ -1,0 +1,184 @@
+{{ 'normalize.css' | asset_url | stylesheet_tag }}
+{{ 'product-details.css' | asset_url | stylesheet_tag }}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+<div style="display: none;">
+  {% render 'icon-sprite' %}
+</div>
+<section class="product-details-section">
+  <div class="container product-details-wrapper">
+    <div class="product-details-left">
+      {% if product.metafields.details.left_image %}
+        <img class="product-details-left-img" src="{{ product.metafields.details.left_image | file_url }}" alt=""/>
+      {% endif %}
+      <aside>
+        <div>
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | img_url: 'large' }}" alt=""/>
+          {% endif %}
+          <div>
+            <div class="product-details-rating">
+              <div class="product-details-rating-stars">
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+                <svg>
+                  <use xlink:href="#star"></use>
+                </svg>
+              </div>
+              {% if product.metafields.details.rating %}
+                <span class="body-extra-small">{{ product.metafields.details.rating }}/5</span>
+              {% endif %}
+            </div>
+            {% if product.title %}
+              <h3 class="heading-medium">{{ product.title | escape }}</h3>
+            {% endif %}
+            {% if product.description %}
+              <div class="body-extra-small">{{ product.description }}</div>
+            {% endif %}
+          </div>
+        </div>
+        <button id="scroll-to-product-overview" type="button" class="button-plus button-plus-large">
+          <svg class="icon">
+            <use xlink:href="#plus"></use>
+          </svg>
+        </button>
+      </aside>
+    </div>
+    <div class="product-details-right">
+      <div class="product-details-card-wrapper">
+        <article class="product-details-card-item">
+          <div>
+            <h3 class="heading-large">Combien ?</h3>
+            {% if product.metafields.details.quantity_adult %}
+              <p class="body-medium"><b>Adultes</b> : {{ product.metafields.details.quantity_adult }}
+                {% if product.metafields.details.quantity_adult > 1 %}
+                  gélules
+                {% else %}
+                  gélule
+                {% endif %}
+                par jour
+              </p>
+            {% endif %}
+            {% if product.metafields.details.quantity_teen %}
+              <p class="body-medium"><b>Ado (+12ans)</b> : {{ product.metafields.details.quantity_teen }}
+                {% if product.metafields.details.quantity_teen > 1 %}
+                  gélules
+                {% else %}
+                  gélule
+                {% endif %}
+                par jour
+              </p>
+            {% endif %}
+          </div>
+          <svg class="icon">
+            <use xlink:href="#pills"></use>
+          </svg>
+        </article>
+        <article class="product-details-card-item-image">
+          {% if product.metafields.details.right_center_image %}
+            <img src="{{ product.metafields.details.right_center_image | file_url }}" alt=""/>
+          {% endif %}
+        </article>
+        <article class="product-details-card-item text-center">
+          <div>
+            <h3 class="heading-large">Quand ?</h3>
+            {% if product.metafields.details.when_to_take %}
+              <p class="body-medium">{{ product.metafields.details.when_to_take }}</p>
+            {% endif %}
+          </div>
+          <svg class="icon">
+            <use xlink:href="#glass"></use>
+          </svg>
+        </article>
+      </div>
+      <article class="product-details-card-item product-details-card-item-large">
+        <h3 class="heading-large">Optimisez vos résultats sur la durée</h3>
+        <ul class="product-details-progress-wrapper">
+          <li>
+            <article class="product-details-progress-item">
+              <h4 class="heading-small">Cure 1 mois</h4>
+              {% if product.metafields.details.progress_1_month_title %}
+                <h5 class="heading-small">{{ product.metafields.details.progress_1_month_title }}</h5>
+              {% endif %}
+              {% if product.metafields.details.progress_1_month_content %}
+                <p class="body-small">{{ product.metafields.details.progress_1_month_content }}</p>
+              {% endif %}
+            </article>
+          </li>
+          <li>
+            <div class="product-details-progress-separator"></div>
+          </li>
+          <li>
+            <article class="product-details-progress-item">
+              <h4 class="heading-small">Cure 3 mois</h4>
+              {% if product.metafields.details.progress_3_months_title %}
+                <h5 class="heading-small">{{ product.metafields.details.progress_3_months_title }}</h5>
+              {% endif %}
+              {% if product.metafields.details.progress_3_months_content %}
+                <p class="body-small">{{ product.metafields.details.progress_3_months_content }}</p>
+              {% endif %}
+            </article>
+          </li>
+          <li>
+            <div class="product-details-progress-separator"></div>
+          </li>
+          <li>
+            <article class="product-details-progress-item">
+              <h4 class="heading-small">Cure 6 mois</h4>
+              {% if product.metafields.details.progress_6_months_title %}
+                <h5 class="heading-small">{{ product.metafields.details.progress_6_months_title }}</h5>
+              {% endif %}
+              {% if product.metafields.details.progress_6_months_content %}
+                <p class="body-small">{{ product.metafields.details.progress_6_months_content }}</p>
+              {% endif %}
+            </article>
+          </li>
+        </ul>
+      </article>
+      <article class="product-details-collapsible collapsible">
+        <div class="product-details-collapsible-trigger collapsible-trigger">
+          <h4 class="body-medium"><b>Lire plus de détails</b> à propos des précautions d’emploi</h4>
+          <button type="button" class="button-plus">
+            <svg class="icon">
+              <use xlink:href="#plus"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="product-details-collapsible-content collapsible-content">
+          <div>
+            {% if product.metafields.details.instructions_for_use %}
+              <p class="body-small">{{ product.metafields.details.instructions_for_use }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<script>
+    const collapsible = document.querySelector('.collapsible');
+    const collapsibleTrigger = document.querySelector('.collapsible-trigger button');
+    collapsibleTrigger.addEventListener('click', () => {
+        collapsible.classList.toggle('active');
+    })
+
+    const productOverviewButton = document.querySelector('#scroll-to-product-overview')
+    const productOverviewSection = document.querySelector('#product-overview');
+    productOverviewButton.addEventListener('click', () => {
+        productOverviewSection.scrollIntoView({behavior: 'smooth'});
+    })
+</script>
