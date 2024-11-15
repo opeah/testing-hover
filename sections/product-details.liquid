@@ -51,7 +51,7 @@
           </div>
         </div>
         <button id="scroll-to-product-overview" type="button" class="button-plus button-plus-large">
-          <svg class="icon">
+          <svg class="details-icon">
             <use xlink:href="#plus"></use>
           </svg>
         </button>
@@ -83,7 +83,7 @@
               </p>
             {% endif %}
           </div>
-          <svg class="icon">
+          <svg class="details-icon">
             <use xlink:href="#pills"></use>
           </svg>
         </article>
@@ -99,7 +99,7 @@
               <p class="body-medium">{{ product.metafields.details.when_to_take }}</p>
             {% endif %}
           </div>
-          <svg class="icon">
+          <svg class="details-icon">
             <use xlink:href="#glass"></use>
           </svg>
         </article>
@@ -151,11 +151,13 @@
       <article class="product-details-collapsible collapsible">
         <div class="product-details-collapsible-trigger collapsible-trigger">
           <h4 class="body-medium"><b>Lire plus de détails</b> à propos des précautions d’emploi</h4>
-          <button type="button" class="button-plus">
-            <svg class="icon">
-              <use xlink:href="#plus"></use>
-            </svg>
-          </button>
+          <div>
+            <button type="button" class="button-plus">
+              <svg class="details-icon" width="23px" height="23px">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </button>
+          </div>
         </div>
         <div class="product-details-collapsible-content collapsible-content">
           <div>
